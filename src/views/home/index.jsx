@@ -3,8 +3,10 @@ import { HomeWrapper } from './style'
 import HomeBanner from './c-cpns/home-banner'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchGoodPriceListAction } from '@/store/modules/home'
-import SectionHeader from '@/components/section-header'
-import SectionRoom from '@/components/section-room'
+import HomeSectionV1 from './c-cpns/home-section-v1'
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import HomeSectionV3 from './c-cpns/home-section-v3'
+import HomeSectionV4 from './c-cpns/home-section-v4'
 
 
 const Home = memo(() => {
@@ -14,8 +16,13 @@ const Home = memo(() => {
     dispatch(fetchGoodPriceListAction())
   }, [dispatch])
   // 2. 获取store中数据
-  const { goodPriceData } = useSelector((state) => ({
-    goodPriceData: state.home.goodPriceData
+  const { goodPriceData, highScoreData, discountData, recommendData, longForData, plusData } = useSelector((state) => ({
+    goodPriceData: state.home.goodPriceData,
+    highScoreData: state.home.highScoreData,
+    discountData: state.home.discountData,
+    recommendData: state.home.recommendData,
+    longForData: state.home.longForData,
+    plusData: state.home.plusData,
   }), shallowEqual)
 
 
@@ -23,10 +30,24 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <div className="good-price">
-          <SectionHeader title={goodPriceData.title} />
-          <SectionRoom roomList={goodPriceData.list} />
-        </div>
+        {
+          Object.keys(discountData).length > 0 && <HomeSectionV2 sectionInfo={discountData}/>
+        }
+        {
+          Object.keys(recommendData).length > 0 && <HomeSectionV2 sectionInfo={recommendData}/>
+        }
+        {
+          Object.keys(longForData).length > 0 && <HomeSectionV3 sectionInfo={longForData}/>
+        }  
+        {
+          Object.keys(goodPriceData).length > 0 && <HomeSectionV1 sectionInfo={goodPriceData}/>
+        }
+        {
+          Object.keys(highScoreData).length  > 0 && <HomeSectionV1 sectionInfo={highScoreData}/>
+        }
+        {
+          Object.keys(plusData).length > 0 && <HomeSectionV4 sectionInfo={plusData}/>
+        }
       </div>
     </HomeWrapper>
   ) 

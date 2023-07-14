@@ -3,16 +3,18 @@ import React, { memo } from 'react'
 import { HeaderWrapper } from './style'
 
 const SectionHeader = memo((props) => {
-  const { title } = props
+  const { title, subtitle } = props
   return (
     <HeaderWrapper>
       <h2 className='title'>{title}</h2>
+      <div className="subtitle">{subtitle}</div>
     </HeaderWrapper>
   )
 })
 
 SectionHeader.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  subtitle: PropTypes.string
 }
 
 export default SectionHeader

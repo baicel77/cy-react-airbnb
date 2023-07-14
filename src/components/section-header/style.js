@@ -5,4 +5,9 @@ export const HeaderWrapper = styled.div`
     margin: 30px 0 16px;
     font-size: 22px;
   }
+  .subtitle {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #222;
+  }
 `
