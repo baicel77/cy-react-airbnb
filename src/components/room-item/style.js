@@ -19,6 +19,64 @@ export const ItemWrapper = styled.div`
         bottom: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
+      }
+    }
+    .slice {
+      position: relative;
+      cursor: pointer;
+      &:hover .control {
+        display: flex;
+      }
+      .control {
+        position: absolute;
+        top: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 83px;
+        height: 100%;
+        color: #fff;
+        cursor: pointer;
+      }
+      .left {
+        left: 0;
+        background-image: linear-gradient(to left,transparent 0%,rgba(0,0,0,0.25) 100%);
+      }
+      .right {
+        right: 0;
+        background-image: linear-gradient(to right,transparent 0%,rgba(0,0,0,0.25) 100%);
+      }
+      .dots {
+        position: absolute;
+        bottom: 10px;
+        width: 30%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        .dots-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20%;
+          flex-shrink: 0;
+          cursor: pointer;
+          &:hover .dot {
+            background-color: pink;
+          }
+          .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: all .2s;
+            &.active {
+              width: 8px;
+              height: 8px;
+              background-color: pink;
+            }
+          }
+        }
       }
     }
     .desc {

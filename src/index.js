@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <HashRouter>
-      <Suspense fallback="loading...">
+      <Suspense fallback="">
         <Provider store={store}>
           <ThemeProvider theme={theme}>
             <App/>
