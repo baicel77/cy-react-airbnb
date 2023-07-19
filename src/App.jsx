@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
 import router from './router'
 import AppHeader from './components/app-header'
@@ -10,13 +10,15 @@ const App = memo(() => {
     <div>
       <AppHeader/>
       <div className="main">
-        {
-          useRoutes(router)
-        }
+        <Suspense fallback="loading...">
+          {
+            useRoutes(router)
+          }
+        </Suspense>
       </div>
       <AppFooter/>
     </div>
   )
 })
 
-export default App
+export default App  

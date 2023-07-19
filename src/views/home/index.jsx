@@ -7,6 +7,7 @@ import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import HomeSectionV3 from './c-cpns/home-section-v3'
 import HomeSectionV4 from './c-cpns/home-section-v4'
+import { changeHeaderConfigAction } from '@/store/modules/main'
 
 
 const Home = memo(() => {
@@ -14,6 +15,10 @@ const Home = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchGoodPriceListAction())
+    dispatch(changeHeaderConfigAction({
+      isFixed: true,
+      topAlpha: true
+    }))
   }, [dispatch])
   // 2. 获取store中数据
   const { goodPriceData, highScoreData, discountData, recommendData, longForData, plusData } = useSelector((state) => ({

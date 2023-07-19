@@ -3,7 +3,8 @@ import { EntireFiltersWrapper } from './style'
 import filtersData from '@/assets/data/filter_data.json'
 import classNames from 'classnames'
 
-const EntireFilters = memo(() => {
+const EntireFilters = memo((props) => {
+  const { isFixed } = props
   const [selectedArray, changeSelectedArray] = useState([])
   const itemClick = item => {
     const index = selectedArray.findIndex(selectedItem => selectedItem === item)
@@ -16,7 +17,7 @@ const EntireFilters = memo(() => {
     changeSelectedArray(newSelectedArray)
   }
   return (
-    <EntireFiltersWrapper>
+    <EntireFiltersWrapper className={classNames({ fixed: isFixed })}>
       <div className="filter">
         {
           filtersData.map(item => {

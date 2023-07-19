@@ -13,10 +13,8 @@ const Indicator = memo((props) => {
     let scrollDistance = targetOffsetLeft + itemWidth * 0.5 - indicatorWidth * 0.5
     
     if (scrollDistance < 0) scrollDistance = 0
-    if (scrollWidth - scrollDistance < indicatorWidth) {
-      scrollDistance = scrollDistance - itemWidth
-      return
-    }
+    if (scrollWidth - scrollDistance < indicatorWidth) scrollDistance = scrollWidth - indicatorWidth
+    
     indicatorRef.current.style.transform = `translateX(${-scrollDistance}px)`
   }, [selectedIndex])
 

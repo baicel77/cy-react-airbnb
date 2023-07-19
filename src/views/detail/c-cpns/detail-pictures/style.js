@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const DetailPicturesWrapper = styled.div`
+  position: relative;
   .top {
     display: flex;
     height: 600px;
@@ -57,5 +58,15 @@ export const DetailPicturesWrapper = styled.div`
       }
     }
 
+  }
+  .show-pic {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    line-height: 22px;
+    padding: 6px 15px;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
   }
 `

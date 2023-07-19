@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { HashRouter } from 'react-router-dom'
@@ -14,13 +14,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <HashRouter>
-      <Suspense fallback="">
         <Provider store={store}>
           <ThemeProvider theme={theme}>
             <App/>
           </ThemeProvider>
         </Provider>
-      </Suspense>
     </HashRouter>
   // </React.StrictMode>
 );

@@ -4,7 +4,7 @@ export const RightWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  color: ${props => props.theme.text.primary};
+  color: ${props => props.theme.isAlpha ? '#fff' : props.theme.text.primary};
   .btns {
     flex: 1;
     display: flex;
@@ -16,7 +16,7 @@ export const RightWrapper = styled.div`
       padding: 12px 15px;
       cursor: pointer;
       &:hover { 
-        background-color: #f5f5f5;
+        background-color: ${props => props.theme.isAlpha ? 'rgba(255,255,255,.1)' : '#f5f5f5'};
       }
     }
   }

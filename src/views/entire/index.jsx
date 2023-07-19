@@ -5,18 +5,27 @@ import EntireRooms from './c-cpns/entire-rooms'
 import EntirePagination from './c-cpns/entire-pagination'
 import { fetchEntireRoomsAction } from '@/store/modules/entire'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { changeHeaderConfigAction } from '@/store/modules/main'
+import classNames from 'classnames'
 
 const Entire = memo(() => {
   // 1. 发起action
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchEntireRoomsAction())
+    dispatch(changeHeaderConfigAction({
+      isFixed: true,
+      topAlpha: false
+    }))
   }, [dispatch])
 
   // 2.获取state
-  const { entireRooms } = useSelector(state => ({
-    entireRooms: state.entire.entireRooms
+  const { entireRooms, headerConfig } = useSelector(state => ({
+    entireRooms: state.entire.entireRooms,
+    headerConfig: state.main.headerConfig
   }), shallowEqual)
+
+  const { isFixed } = headerConfig
 
   useEffect(() => {
     window.scrollTo({
@@ -25,8 +34,8 @@ const Entire = memo(() => {
   }, [])
 
   return (
-    <EntireWrapper>
-      <EntireFilters />
+    <EntireWrapper className={classNames({ fixed: isFixed })}>
+      <EntireFilters isFixed={isFixed}/>
       {
         entireRooms.length > 0 && <EntireRooms entireRooms={entireRooms}/>
       }

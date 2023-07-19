@@ -5,7 +5,7 @@ export const LeftWrapper = styled.div`
   display: flex;
   .logo {
     margin-left: 24px;
-    color: ${props => props.theme.primary};
+    color: ${props => props.theme.isAlpha ? '#fff' : props.theme.primary};
     cursor: pointer;
   }
 `
